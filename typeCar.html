@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.hero{
+			width: 100%;
+			height: 100vh;
+			background-image: linear-gradient(#f44336,#730228);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.selector{
+			width: 350px;
+		}
+		#selectField{
+			width: 100%;
+			padding: 15px 20px;
+			margin-bottom: 30px;
+			box-sizing: border-box;
+			background: rgba(255, 255, 255, .6);
+			border-radius: 6px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			cursor: pointer;
+		}
+		#selectField i{
+			font-size: 20px;
+			color: #222;
+			transition: all .4s ease-in-out;
+		}
+		#list{
+			width: 100%;
+			height: 200px;
+			background: rgba(255, 255, 255, .7);
+			border-radius: 6px;
+			overflow: hidden;
+		}
+		.options{
+			width: 100%;
+			padding: 15px 0 15px 70px;
+			list-style: none;
+			box-sizing: border-box;
+			cursor: pointer;
+			position: relative;
+		}
+		.options img{
+			width: 55px;
+			position: absolute;
+			top: 50%;
+			left: 10px;
+			transform: translateY(-50%);
+		}
+		.options:hover{
+			background: rgba(255, 255,255, .7);
+		}
+	    .hide{
+	    	visibility: hidden;
+	    }
+	    .rotate{
+	    	transform: rotate(180deg);
+	    }
+	</style>
+</head>
+<body>
+	<div class="hero">
+		<div class="selector">
+			<div id="selectField">
+				<p id="selectText">Select Social Media</p>
+				<i class="fas fa-chevron-down arrow"></i>
+			</div>
+			<ul id="list" class="hide">
+				<li class="options">
+					<img src="img/logo.png">
+					<p>Logo 1</p>
+				</li class="options">
+				<li class="options">
+					<img src="img/logo.png">
+					<p>Logo 2</p>
+				</li>
+				<li class="options">
+					<img src="img/logo.png">
+					<p>Logo 3</p>
+				</li>
+				<li class="options">
+					<img src="img/logo.png">
+					<p>Logo 4</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+<script>
+	var selectField = document.getElementById("selectField");
+	var selectText = document.getElementById("selectText");
+	var options= document.getElementsByClassName('options');
+	var list = document.getElementById("list");
+	var arrow = document.querySelector(".arrow");
+	selectField.onclick = function(){
+		list.classList.toggle("hide");
+		arrow.classList.toggle("rotate");
+	}
+	for(option of options){
+		option.onclick = function(){
+			console.log(this.firstElementChild);
+			selectText.innerHTML = this.textContent;
+			list.classList.toggle("hide");
+			arrow.classList.toggle("rotate");
+		}
+	}
+</script>
+</body>
+</html>
